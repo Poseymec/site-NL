@@ -38,20 +38,20 @@ if(!empty($_POST)){
     }else{
         $isUploadSuccess = true;
         if($imageExtension != "jpg" && $imageExtension != "png" && $imageExtension != "jpeg" && $imageExtension != "gif" ) {
-            $imageError = "Les fichiers autorises sont: .jpg, .jpeg, .png, .gif";
+            $imageErreur = "Les fichiers autorises sont: .jpg, .jpeg, .png, .gif";
             $isUploadSuccess = false;
         }
         if(file_exists($imagePath)) {
-            $imageError = "Le fichier existe deja";
+            $imageErreur = "Le fichier existe deja";
             $isUploadSuccess = false;
         }
         if($_FILES["image"]["size"] > 500000) {
-            $imageError = "Le fichier ne doit pas depasser les 500KB";
+            $imageErreur = "Le fichier ne doit pas depasser les 500KB";
             $isUploadSuccess = false;
         }
         if($isUploadSuccess) {
             if(!move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) {
-                $imageError = "Il y a eu une erreur lors de l'upload";
+                $imageErreur = "Il y a eu une erreur lors de l'upload";
                 $isUploadSuccess = false;
             } 
         } 
@@ -114,7 +114,7 @@ function verification($data){
         </div>
         <div class="container admin">
             <div class="row">
-                <div class="col-sm-12  col-md-12 col-lg-12">
+               
                     <h1><strong>Ajouter un produit</strong></h1> <br>
                     <form action="ajouter.php" method="POST" enctype="multipart/form-data" class="form" role="form">
                         <div class="form-group">
